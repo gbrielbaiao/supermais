@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supermais</title>
+  <meta name="description" content="Consulte produtos disponíveis no seu supermercado favorito, com busca e filtro por categoria." />
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <header class="app-header" id="app-header">
+    <div class="container app-header__inner">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <div>
+          <div class="brand__name">Supermais - Vitrine</div>
+          <div class="brand__tagline">Encontre tudo no seu mercado</div>
+        </div>
+      </div>
+
+      <div class="header-search" id="header-search" hidden>
+        <span class="header-search__icon" aria-hidden="true">🔎</span>
+        <input
+          class="header-search__input"
+          type="search"
+          id="product-search"
+          placeholder="Buscar produto pelo nome..."
+          aria-label="Buscar produto pelo nome"
+        />
+      </div>
+
+      <div class="filter-menu" id="filter-menu" hidden>
+        <button
+          class="filter-toggle"
+          id="filter-toggle"
+          type="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-label="Filtrar por categoria"
+          title="Filtrar por categoria"
+        >
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 4h14l-5.5 6.5v5L8.5 17v-6.5L3 4z" />
+          </svg>
+          <span class="filter-toggle__badge" id="filter-badge" hidden></span>
+        </button>
+
+        <div class="filter-popover" id="filter-popover" role="menu" hidden>
+          <span class="filter-popover__title">Categoria</span>
+          <div id="filter-options"></div>
+        </div>
+      </div>
+
+      <div class="header-store-context" id="header-store-context" hidden>
+        <span class="header-store-context__name">
+          <small>Você está em</small>
+          <span id="header-store-name"></span>
+        </span>
+        <button class="btn-change-store" id="btn-change-store" type="button">
+          <span aria-hidden="true">⇄</span>
+          <span class="btn-change-store__label">Trocar loja</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Etapa 1: seleção de supermercado -->
+    <section class="view is-active" id="view-store-select">
+      <div class="container store-select">
+        <div class="store-select__intro">
+          <h1 class="store-select__title">Escolha o mercado que você quer consultar</h1>
+          <p class="store-select__subtitle">Selecione um estabelecimento para ver os produtos, preços e disponibilidade em tempo real.</p>
+        </div>
+
+        <div class="store-grid" id="store-grid" aria-live="polite">
+          <!-- Cards de loja inseridos via JavaScript (storeSelector.js) -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Etapa 2: catálogo de produtos da loja selecionada -->
+    <section class="view" id="view-catalog">
+      <div class="container catalog">
+        <p class="results-summary" id="results-summary"></p>
+
+        <div class="product-grid" id="product-grid" aria-live="polite">
+          <!-- Cards de produto inseridos via JavaScript (productGrid.js) -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="container">
+      Vitrine · Protótipo de consulta de produtos para supermercados · Dados de demonstração
+    </div>
+  </footer>
+
+  <!-- Dados de exemplo (substituíveis futuramente por uma API) -->
+  <script src="js/data/categories.js"></script>
+  <script src="js/data/stores.js"></script>
+  <script src="js/data/products.js"></script>
+
+  <!-- Utilitários -->
+  <script src="js/utils/dom.js"></script>
+  <script src="js/utils/format.js"></script>
+
+  <!-- Serviço de dados e estado -->
+  <script src="js/services/dataService.js"></script>
+  <script src="js/state/appState.js"></script>
+
+  <!-- Componentes de interface -->
+  <script src="js/components/storeSelector.js"></script>
+  <script src="js/components/productCard.js"></script>
+  <script src="js/components/filterBar.js"></script>
+  <script src="js/components/productGrid.js"></script>
+
+  <!-- Controlador principal -->
+  <script src="js/app.js"></script>
+</body>
+</html>

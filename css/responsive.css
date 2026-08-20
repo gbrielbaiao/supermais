@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Responsividade
+   ========================================================================== */
+
+@media (min-width: 560px) {
+  .brand__tagline {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .store-select {
+    padding-block: var(--space-5) var(--space-6);
+  }
+
+  .store-select__title {
+    font-size: var(--fs-xl);
+  }
+
+  .store-grid,
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  .header-store-context__name {
+    display: none;
+  }
+
+  .btn-change-store {
+    padding: var(--space-2);
+  }
+
+  .btn-change-store span.btn-change-store__label {
+    display: none;
+  }
+
+  /* Cabeçalho em duas linhas no celular: marca + controles na primeira,
+     busca ocupando a linha toda logo abaixo. */
+  .brand {
+    order: 1;
+  }
+
+  .filter-menu {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .header-store-context {
+    order: 3;
+    margin-left: 0;
+  }
+
+  .header-search {
+    order: 4;
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  /* Sem override de left/right aqui: o posicionamento horizontal do
+     .filter-popover é recalculado dinamicamente pelo JS (app.js) toda vez
+     que ele abre, para garantir que nunca fique cortado pela borda da tela,
+     não importa onde o botão de filtro caia no cabeçalho. */
+}
+
+@media (max-width: 420px) {
+  .store-grid,
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
